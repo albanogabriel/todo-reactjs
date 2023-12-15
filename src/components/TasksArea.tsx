@@ -5,16 +5,24 @@ import { TaskComponent } from './TaskComponent'
 import styles from './TasksArea.module.css'
 import { useState } from 'react'
 
-export function TasksArea() {
-  const [taskValue, setTaskValue] = useState(['Tomar 2L de água'])
+export interface taskType {
+  key: number
+  nomeTarefa: string
+  isChecked: boolean
+}
 
-  function handleCreateTask(newTask: string) {
+export function TasksArea() {
+  const [taskValue, setTaskValue] = useState([
+    { key: 1, nomeTarefa: 'Exemplo de nome', isChecked: true }
+  ])
+
+  function handleCreateTask(newTask: taskType) {
     setTaskValue([...taskValue, newTask])
   }
 
-  function deleteTask(taskClickedOnButtonDelete: string) {
+  function deleteTask(taskClickedOnButtonDelete: taskType) {
     const tasksWithoutDeleteOne = taskValue.filter((taskItem) => {
-      return taskItem !== taskClickedOnButtonDelete
+      return taskItem.key !== taskClickedOnButtonDelete.key
     })
 
     setTaskValue(tasksWithoutDeleteOne)
@@ -24,7 +32,7 @@ export function TasksArea() {
 
   return (
     <main>
-      <SearchBar onCreateTask={handleCreateTask} />
+      <SearchBar onCreateTask={handleCreateTask} taskValue={taskValue} />
 
       <div className={styles.tasksInfoContainer}>
         <div className={styles.tasksInfo}>
@@ -33,7 +41,7 @@ export function TasksArea() {
         </div>
         <div className={styles.tasksInfo}>
           <p>Concluídas</p>
-          <span>número de tarefas concluídas</span>
+          <span>{taskValue.filter((task) => task.isChecked).length}</span>
         </div>
       </div>
       <div className={styles.divLine}></div>

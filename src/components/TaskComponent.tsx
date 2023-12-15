@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import trashIcon from '../assets/trashicon.svg'
 
+import { taskType } from './TasksArea'
+
 import styles from './TaskComponent.module.css'
 
 interface TaskComponentProps {
-  content: string
-  onDeleteTask: (task: string) => void
+  content: taskType
+  onDeleteTask: (task: taskType) => void
 }
 
 export function TaskComponent({ content, onDeleteTask }: TaskComponentProps) {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(content.isChecked)
 
   function handleDeleteTask() {
     onDeleteTask(content)
@@ -28,7 +30,7 @@ export function TaskComponent({ content, onDeleteTask }: TaskComponentProps) {
             type="checkbox"
             checked={checked}
           />
-          <p>{content}</p>
+          <p>{content.nomeTarefa}</p>
         </div>
         <button onClick={handleDeleteTask}>
           <img src={trashIcon} alt="" />

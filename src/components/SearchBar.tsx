@@ -1,11 +1,13 @@
 import { ChangeEvent, InvalidEvent, useState } from 'react'
 import styles from './SearchBar.module.css'
+import { taskType } from './TasksArea'
 
 interface SearchBarProps {
-  onCreateTask: (task: string) => void
+  onCreateTask: (task: taskType) => void
+  taskValue: taskType[]
 }
 
-export function SearchBar({ onCreateTask }: SearchBarProps) {
+export function SearchBar({ onCreateTask, taskValue }: SearchBarProps) {
   const [newTaskText, setNewTaskText] = useState('')
   const [searchFocus, setSearchFocus] = useState(true)
 
@@ -15,7 +17,18 @@ export function SearchBar({ onCreateTask }: SearchBarProps) {
 
   function handleCreateTask() {
     if (newTaskText.length !== 0) {
-      onCreateTask(newTaskText)
+      const newKey =
+        taskValue.length > 0
+          ? Math.max(...taskValue.map((task) => task.key)) + 1
+          : 1
+
+      const newTask = {
+        key: newKey,
+        nomeTarefa: newTaskText,
+        isChecked: false
+      }
+
+      onCreateTask(newTask)
       setNewTaskText('') // Limpar o texto após criar a tarefa
     }
   }
