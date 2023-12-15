@@ -1,26 +1,21 @@
 // import { tasks, TaskType } from './lib/tasks'
 
-import todoLogo from '../public/todologo.svg'
+import todoLogo from './assets/todologo.svg'
 
 import styles from './App.module.css'
 
 import './global.css'
+import { TasksArea } from './components/TasksArea'
 
 function App() {
   return (
     <div>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <img src={todoLogo} alt="logo todo" />
-      </div>
-      <div className={styles.searchBarContainer}>
-        <input
-          className={styles.searchBar}
-          type="search"
-          placeholder="Adicione uma nova tarefa"
-        />
-        <button type="button">
-          Criar <span>( + )</span>
-        </button>
+      </header>
+
+      <div className={styles.tasksContainer}>
+        <TasksArea />
       </div>
     </div>
   )

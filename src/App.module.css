@@ -1,38 +1,17 @@
+.tasksContainer {
+  max-width: 736px;
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4.5rem 0rem 4.5rem 0rem;
   background-color: var(--gray-700);
-}
-
-.searchBarContainer {
-  display: flex;
-  justify-content: center;
-  
-  margin-top: calc(0px - 1.625rem);
-}
-
-.searchBar {
-  background: var(--gray-400);
-  padding: 1rem;
-  border: none;
-  width: 500px;
-  border-radius: 8px;
-}
-
-.searchBar::placeholder {
-  color: var(--gray-200);
-}
-
-.searchBarContainer button {
-  padding: 1rem;
-  margin-left: 0.5rem;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--blue-dark);
-  color: var(--white);
-  font-weight: bold;
 }
 
 @media (max-width: 768px){

@@ -1,0 +1,32 @@
+.taskContainer {
+  justify-content: center;
+}
+
+.tasksInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.tasksInfo {
+  display: flex;
+}
+
+.divLine {
+  height: 0.003rem;
+  background-color: var(--gray-100);
+  margin-bottom: 2rem;
+}
+
+.divWithoutTasks {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
