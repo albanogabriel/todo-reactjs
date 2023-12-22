@@ -16,6 +16,17 @@ export function TasksArea() {
     { key: 1, nomeTarefa: 'Exemplo de nome', isChecked: true }
   ])
 
+  function toggleTask(taskToToggle: taskType) {
+    const updatedTasks = taskValue.map((task) => {
+      if (task.key === taskToToggle.key) {
+        return { ...task, isChecked: !task.isChecked }
+      }
+      return task
+    })
+
+    setTaskValue(updatedTasks)
+  }
+
   function handleCreateTask(newTask: taskType) {
     setTaskValue([...taskValue, newTask])
   }
@@ -56,7 +67,13 @@ export function TasksArea() {
         </div>
       ) : (
         taskValue.map((task) => {
-          return <TaskComponent content={task} onDeleteTask={deleteTask} />
+          return (
+            <TaskComponent
+              content={task}
+              onDeleteTask={deleteTask}
+              onToggleTask={toggleTask}
+            />
+          )
         })
       )}
     </main>

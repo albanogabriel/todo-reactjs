@@ -8,9 +8,14 @@ import styles from './TaskComponent.module.css'
 interface TaskComponentProps {
   content: taskType
   onDeleteTask: (task: taskType) => void
+  onToggleTask: (task: taskType) => void
 }
 
-export function TaskComponent({ content, onDeleteTask }: TaskComponentProps) {
+export function TaskComponent({
+  content,
+  onDeleteTask,
+  onToggleTask
+}: TaskComponentProps) {
   const [checked, setChecked] = useState(content.isChecked)
 
   function handleDeleteTask() {
@@ -21,6 +26,10 @@ export function TaskComponent({ content, onDeleteTask }: TaskComponentProps) {
     setChecked(!checked)
   }
 
+  function handleChangeInput() {
+    onToggleTask(content)
+  }
+
   return (
     <div className={styles.divWithTasks}>
       <div className={styles.divWithTasksContainer}>
@@ -29,6 +38,7 @@ export function TaskComponent({ content, onDeleteTask }: TaskComponentProps) {
             onClick={handleChangeChecked}
             type="checkbox"
             checked={checked}
+            onChange={handleChangeInput}
           />
           <p>{content.nomeTarefa}</p>
         </div>
