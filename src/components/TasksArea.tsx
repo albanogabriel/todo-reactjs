@@ -47,12 +47,14 @@ export function TasksArea() {
 
       <div className={styles.tasksInfoContainer}>
         <div className={styles.tasksInfo}>
-          <p>Tarefas criadas</p>
-          <span>{taskValue.length}</span>
+          <p className={styles.taskInfoCreatedTasks}>Tarefas criadas</p>
+          <span className={styles.taskInfoButton}>{taskValue.length}</span>
         </div>
         <div className={styles.tasksInfo}>
-          <p>Concluídas</p>
-          <span>{taskValue.filter((task) => task.isChecked).length}</span>
+          <p className={styles.taskInfoCheckedTasks}>Concluídas</p>
+          <span className={styles.taskInfoButton}>
+            {taskValue.filter((task) => task.isChecked).length}
+          </span>
         </div>
       </div>
       <div className={styles.divLine}></div>

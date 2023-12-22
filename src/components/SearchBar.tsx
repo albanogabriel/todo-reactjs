@@ -2,6 +2,8 @@ import { ChangeEvent, InvalidEvent, useState } from 'react'
 import styles from './SearchBar.module.css'
 import { taskType } from './TasksArea'
 
+import plusIcon from '../assets/botao-add.svg'
+
 interface SearchBarProps {
   onCreateTask: (task: taskType) => void
   taskValue: taskType[]
@@ -61,11 +63,12 @@ export function SearchBar({ onCreateTask, taskValue }: SearchBarProps) {
         onBlur={handleTurnSearchFocusTrue}
       />
       <button
+        className={styles.createTaskBtn}
         onClick={handleCreateTask}
         disabled={isNewTaskInputEmpty && searchFocus}
         type="button"
       >
-        Criar <span>( + )</span>
+        Criar <img src={plusIcon} alt="" />
       </button>
     </div>
   )

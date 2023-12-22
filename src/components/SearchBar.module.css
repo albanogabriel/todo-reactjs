@@ -32,3 +32,10 @@
   display: none;
   cursor: not-allowed;
 }
+
+.createTaskBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+}
