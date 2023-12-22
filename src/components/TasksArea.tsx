@@ -13,7 +13,7 @@ export interface taskType {
 
 export function TasksArea() {
   const [taskValue, setTaskValue] = useState([
-    { key: 1, nomeTarefa: 'Exemplo de nome', isChecked: true }
+    { key: 1, nomeTarefa: 'Tomar 2 Litros de Água', isChecked: false }
   ])
 
   function toggleTask(taskToToggle: taskType) {
